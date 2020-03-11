@@ -1,35 +1,26 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { AppLogo } from './components/AppLogo';
+import { runInThisContext } from 'vm';
 
 class App extends React.Component {
     state = {
-        message: 'Loading...',
-        isLogo: true
+        message: 'Loading...'
     };
 
     componentDidMount() {
         setTimeout(() => this.setState({ message: 'Learn React' }), 3000);
     }
 
-    removeComponent() {
-        this.setState({ isLogo: false });
-    }
-
-    renderLogoThing() {
-        if (this.state.isLogo) {
-            return <AppLogo logoAlt="logo" isLogo={this.state.isLogo} />;
-        }
-
-        return null;
-    }
+    renderLogoThing = () => {
+        return <AppLogo logoAlt="logo" />;
+    };
 
     render() {
         return (
             <Container className="App">
                 <Row className="App-header">
-                    ``
-                    <Col>{this.renderLogoThing()}</Col>
+                    <Col className="text-center">{this.renderLogoThing()}</Col>
                 </Row>
                 <Row className="text-center">
                     <Col className="text-center">

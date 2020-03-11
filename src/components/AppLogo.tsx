@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 
+const urlLogo = 'https://www.complaintsboard.com/img/business/123255/900x900/cbt-nuggets.png';
+
 export const AppLogo = (props: any) => {
-    const { logoAlt, isLogo } = props;
+    const [isReactLogo, setIsReactLogo] = useState(true);
+
+    const { logoAlt } = props;
+
     return (
         <>
-            {/*<a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">*/}
-            <img src={logo} className="App-logo" alt={logoAlt} onClick={() => console.log('Logo is: ', isLogo.toString())} />
-            {/*</a>*/}
+            <img src={isReactLogo ? logo : urlLogo} className="App-logo" alt={logoAlt} onClick={() => setIsReactLogo(!isReactLogo)} />
         </>
     );
 };
