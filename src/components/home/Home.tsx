@@ -2,12 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { AppLogo } from './AppLogo';
 
+enum HomePageStatus {
+    LOADING = 'LOADING',
+    SUCCESS = 'SUCCESS'
+}
+
 export const Home = () => {
-    const [message, setMessage] = useState('Loading...');
+    const [pageStatus, setPageStatus] = useState(HomePageStatus.LOADING);
+    const [fakeStateItem, setFakeStateItem] = useState(true);
 
     useEffect(() => {
-        setTimeout(() => setMessage('Learn React'), 3000);
-    }, []);
+        setPageStatus(HomePageStatus.LOADING);
+        setTimeout(() => setPageStatus(HomePageStatus.SUCCESS), 3000);
+    }, [fakeStateItem]);
 
     const renderLogoThing = () => {
         return <AppLogo logoAlt="logo" />;
@@ -21,14 +28,14 @@ export const Home = () => {
             <Row className="text-center">
                 <Col className="text-center">
                     <p>
-                        Edit <code>src/App.tsx</code> and save to reload.
+                        Edit <code onClick={() => setFakeStateItem(!fakeStateItem)}>src/App.tsx</code> and save to reload.
                     </p>
                 </Col>
             </Row>
             <Row className="text-center">
                 <Col className="text-center">
                     <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                        {message}
+                        {pageStatus === HomePageStatus.LOADING ? 'Loading Page...' : 'I am done now.'}
                     </a>
                 </Col>
             </Row>

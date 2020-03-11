@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Navbar, Nav, Form, Button, FormControl, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -6,14 +6,16 @@ export const NavigationBar = (props: any) => {
     return (
         <Navbar bg="light" expand="lg">
             <LinkContainer exact to="/">
-                <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="#home">Big Home</Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <LinkContainer exact to="/link">
-                        <Nav.Link>Link</Nav.Link>
+                    <LinkContainer exact to="/home">
+                        <Nav.Link href="#home">Home</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer exact to="/unit-converter">
+                        <Nav.Link href="#unit-converter">Unit Converter</Nav.Link>
                     </LinkContainer>
                     <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
